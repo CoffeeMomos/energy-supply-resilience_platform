@@ -1,0 +1,10 @@
+MATCH (country:Country {name:"Saudi Arabia"})
+MATCH (corridor:Corridor {name:"Strait of Hormuz"})
+MATCH (port:Port {name:"Sikka"})
+MATCH (refinery:Refinery {name:"Jamnagar"})
+MATCH (risk:RiskEvent {name:"Iran-Israel Conflict"})
+
+MERGE (country)-[:EXPORTS_VIA]->(corridor)
+MERGE (corridor)-[:ENTERS_VIA]->(port)
+MERGE (port)-[:SUPPLIES]->(refinery)
+MERGE (risk)-[:THREATENS]->(corridor)
